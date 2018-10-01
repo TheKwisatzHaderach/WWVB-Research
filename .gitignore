@@ -1,0 +1,10 @@
+#Ignore folder named "ENV"
+ENV/
+
+data/
+
+scripts/
+
+.vscode/
+
+figures/

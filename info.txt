@@ -1,0 +1,27 @@
+FFmpeg Commands:
+    Get File information: ffmpeg -i example.mp4 -hide_banner
+
+    Seperate File (Keeps original intact)(seperated by seconds): ffmpeg -i example.wav -acodec copy -ss 0.000000 -to 120.000000 example.wav
+
+    Convert Audio File(Keeps Original Intact): ffmpeg -i example.flac new.wav
+
+    Take stereo file and seperate into 2 mono files: ffmpeg -i input.wav -map_channel 0.0.0 ch1.wav -map_channel 0.0.1 ch2.wav
+
+
+Audio File Information:
+    WWVB_Data.flac: Main Audio File / data.wav
+         Metadata:
+        TITLE           : WWVB Amplitude & Phase
+        ARTIST          : WWVB vs.1 kHz Reference
+        DATE            : August 21, 2017
+        comment         : Recorded by KD2BD 1400 UTC to 2200 UTC
+        GENRE           : Space
+        Duration: 08:00:00.75, start: 0.000000, bitrate: 277 kb/s
+        Stream #0:0: Audio: flac, 44100 Hz, stereo, s16
+
+    sample1.wav: 2 min sample of WWVB_Data from 10min - 12min (2channels)
+
+    sample1ch1.wav: Channel 1 of sample1.wav
+
+    sample1ch2.wav: Channel 2 of sample1.wav
+
