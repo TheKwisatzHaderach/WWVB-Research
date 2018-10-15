@@ -163,7 +163,7 @@ X = createX(frequency, ampLow, ampHigh)
 minutesS = getMinutes(minutes)
 hoursS = getHours(hours)
 
-newSignal = expectedSignal(minutesS, hoursS, Zero, One, X)
+newSignal = expectedSignal(hoursS, minutesS, Zero, One, X)
 
 #Checks to make sure that wwvbSignal and newSignal are same length
 while len(wwvbSignal) > len(newSignal):
@@ -174,13 +174,34 @@ print(len(wwvbSignal))
 
 nS = np.array(newSignal)
 
-corr = signal.correlate(wwvbSignal, newSignal, mode='same')
+corr = signal.correlate(newSignal, wwvbSignal, mode='full') 
 
 print(len(corr))
 
+seconds = []
+count = 0
+for x in range(0,61):
+    seconds.append(count)
+    count = count + (44100)
+
 plt.figure(1)
-plt.title('Signal Wave...')
+plt.title('Expected Signal with AM Modulation')
+plt.plot(newSignal)
+for i in seconds:
+    plt.axvline(i, color="red")
+
+
+plt.figure(2)
+plt.title('WWVB Signal 1 Minute')
+plt.plot(wwvbSignal)
+for i in seconds:
+    plt.axvline(i, color="red")
+
+plt.figure(3)
+plt.title('Cross Correlated Signal')
 plt.plot(corr)
+for i in seconds:
+    plt.axvline(i, color="red")
 plt.show()
 
 

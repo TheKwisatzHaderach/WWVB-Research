@@ -40,5 +40,9 @@ def getHours(hours):
 
 from scipy import signal
 sig = np.repeat([0., 1., 1., 0., 1., 0., 0., 1.], 128)
+sig_noise = sig + np.random.randn(len(sig))
+corr = signal.correlate(sig_noise, np.ones(128), mode='same') 
 
 print(len(sig))
+print(len(sig_noise))
+print(len(corr))
