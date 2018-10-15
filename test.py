@@ -1,9 +1,44 @@
 import numpy as np
-import wave
 
-spf = wave.open('data/sample1ch1.wav','r')
+minutes = 42
 
-signal = spf.readframes(-1)
-signal = np.fromstring(signal, 'Int16')
+#Takes in minutes as integer and returns a binary encoded string (seconds :1 - :8)
+def getMinutes(minutes):
+    bnum = bin(minutes)
+    new = bnum[2:len(bnum)]
 
-print(len(signal)/120)
+    while len(new) < 7:
+        new = '0' + new
+
+    print(new)
+
+    new = new[:3] + '0' + new[3:]
+
+    print(new)
+    return new
+
+#getMinutes(minutes)
+
+hours = 14
+
+#takes in hours as integer and returns a binary encoded string (seconds :12 - :18)
+def getHours(hours):
+    bnum = bin(hours)
+    new = bnum[2:len(bnum)]
+
+    while len(new) < 6:
+        new = '0' + new
+
+    print(new)
+
+    new = new[:2] + '0' + new[2:]
+
+    print(new)
+    return new
+
+#getHours(hours)
+
+from scipy import signal
+sig = np.repeat([0., 1., 1., 0., 1., 0., 0., 1.], 128)
+
+print(len(sig))

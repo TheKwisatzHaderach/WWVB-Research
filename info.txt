@@ -19,9 +19,5 @@ Audio File Information:
         Duration: 08:00:00.75, start: 0.000000, bitrate: 277 kb/s
         Stream #0:0: Audio: flac, 44100 Hz, stereo, s16
 
-    sample1.wav: 2 min sample of WWVB_Data from 10min - 12min (2channels)
-
-    sample1ch1.wav: Channel 1 of sample1.wav
-
-    sample1ch2.wav: Channel 2 of sample1.wav
+    oneminch1.wav 14:00:00 UTC - 14:01:00 UTC 2646016 frames
 
