@@ -135,25 +135,78 @@ def createX(frequency, ampLow, ampHigh):
     return X
 
 def getMinutes(minutes):
-    bnum = bin(minutes)
-    new = bnum[2:len(bnum)]
-
-    while len(new) < 7:
-        new = '0' + new
-
-    new = new[:3] + '0' + new[3:]
-
+    new = ""
+    if minutes >= 40:
+        new = new + '1'
+        minutes = minutes - 40
+    else:
+        new = new + '0'
+    if minutes >= 20:
+        new = new + '1'
+        minutes = minutes - 20
+    else:
+        new = new + '0'
+    if minutes >= 10:
+        new = new + '1'
+        minutes = minutes - 10
+    else:
+        new = new + '0'
+    new = new + '0'
+    if minutes >= 8:
+        new = new + '1'
+        minutes = minutes - 8
+    else:
+        new = new + '0'
+    if minutes >= 4:
+        new = new + '1'
+        minutes = minutes - 4
+    else:
+        new = new + '0'
+    if minutes >= 2:
+        new = new + '1'
+        minutes = minutes - 2
+    else:
+        new = new + '0'
+    if minutes >= 1:
+        new = new + '1'
+        minutes = minutes - 11
+    else:
+        new = new + '0'
     return new
 
 def getHours(hours):
-    bnum = bin(hours)
-    new = bnum[2:len(bnum)]
-
-    while len(new) < 6:
-        new = '0' + new
-
-    new = new[:2] + '0' + new[2:]
-
+    new = ""
+    if hours >= 20:
+        new = new + '1'
+        hours = hours - 20
+    else:
+        new = new + '0'
+    if hours >= 10:
+        new = new + '1'
+        hours = hours - 10
+    else:
+        new = new + '0'
+    new = new + '0'
+    if hours >= 8:
+        new = new + '1'
+        hours = hours - 8
+    else:
+        new = new + '0'
+    if hours >= 4:
+        new = new + '1'
+        hours = hours - 4
+    else:
+        new = new + '0'
+    if hours >= 2:
+        new = new + '1'
+        hours = hours - 2
+    else:
+        new = new + '0'
+    if hours >= 1:
+        new = new + '1'
+        hours = hours - 1
+    else:
+        new = new + '0'
     return new
 
 Zero = createZero(frequency, ampLow, ampHigh)
@@ -186,22 +239,21 @@ for x in range(0,61):
 
 plt.figure(1)
 plt.title('Expected Signal with AM Modulation')
+plt.ylim((-10000, 10000))
 plt.plot(newSignal)
-for i in seconds:
-    plt.axvline(i, color="red")
+
+#for i in seconds:
+   # plt.axvline(i, color="red")
 
 
 plt.figure(2)
 plt.title('WWVB Signal 1 Minute')
 plt.plot(wwvbSignal)
-for i in seconds:
-    plt.axvline(i, color="red")
+
 
 plt.figure(3)
 plt.title('Cross Correlated Signal')
 plt.plot(corr)
-for i in seconds:
-    plt.axvline(i, color="red")
 plt.show()
 
 
