@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from scipy.fftpack import fft
 from scipy.io import wavfile # get the api
+
 fs, data = wavfile.read('data/sample1.wav') # load the data
 a = data.T[1] # this is a two channel soundtrack, I get the first track
 b=[(ele/2**16.)*2-1 for ele in a] # this is 16-bit track, b is now normalized on [-1,1)

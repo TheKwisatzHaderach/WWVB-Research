@@ -17,6 +17,7 @@ spf = wave.open('data/oneminch1.wav','r')
 wwvbSignal = spf.readframes(-1)
 wwvbSignal = np.fromstring(wwvbSignal, 'Int16')
 
+
 #Function that generatedd the expected signal
 #Everything will remain Constant Exept for Hour and Minute
 #Used to create One minute Expected Signals of AM during August 21, 2017
@@ -189,7 +190,6 @@ Zero = createZero(Fs, f, ampHigh, ampLow)
 One = createOne(Fs, f, ampHigh, ampLow)
 X = createX(Fs, f, ampHigh, ampLow)
 
-
 minutesS = getMinutes(minutes)
 hoursS = getHours(hours)
 
@@ -199,9 +199,14 @@ newSignal = expectedSignal(hoursS, minutesS, Zero, One, X)
 while len(wwvbSignal) > len(newSignal):
     newSignal.append(0)
 
+print(len(newSignal))
+print(len(wwvbSignal))
+
 nS = np.array(newSignal)
 
 corr = signal.correlate(wwvbSignal, nS, mode='same') 
+
+print(len(corr))
 
 plt.figure(1)
 plt.title('Expected Signal with AM Modulation (14:00 UTC)')
@@ -214,13 +219,10 @@ plt.title('WWVB Signal 1 Minute (14:00 UTC)')
 plt.xlabel("Sample Rate = 44100Hz | (60 Seconds)")
 plt.plot(wwvbSignal)
 
-
 plt.figure(3)
-plt.title('Correlated Signal (14:00 UTC)')
+plt.title('Correlated Expected Signal (14:00 UTC)')
 plt.plot(corr)
 
 plt.show()
-
-
 
 

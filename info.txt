@@ -1,3 +1,5 @@
+All programs written in python 2.7
+
 FFmpeg Commands:
     Get File information: ffmpeg -i example.mp4 -hide_banner
 
