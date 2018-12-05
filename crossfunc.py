@@ -201,7 +201,11 @@ while len(wwvbSignal) > len(newSignal):
 
 nS = np.array(newSignal)
 
-corr = signal.correlate(wwvbSignal, nS, mode='same') 
+#Taking absolute to better visualize
+#wwvbSignal = np.absolute(wwvbSignal)
+#nS = np.absolute(nS)
+
+corr = signal.correlate(wwvbSignal, nS, mode='full') 
 
 plt.figure(1)
 plt.title('Expected Signal with AM Modulation (14:00 UTC)')
@@ -216,7 +220,7 @@ plt.plot(wwvbSignal)
 
 
 plt.figure(3)
-plt.title('Correlated Signal (14:00 UTC)')
+plt.title('Correlated Signal (14:00 UTC) Taken from WWVB and Expected')
 plt.plot(corr)
 
 plt.show()

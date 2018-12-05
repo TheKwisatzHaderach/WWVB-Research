@@ -23,7 +23,7 @@ for i in seconds:
 
 plt.figure(2)
 plt.title('Signal With Noise')
-plt.plot(sig_noise)
+plt.plot(np.ones(128))
 plt.axhline(y=0.5, linewidth=1, color='g')
 for i in seconds:
     plt.axvline(i, color="red")
